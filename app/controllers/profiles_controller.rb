@@ -1,5 +1,7 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   respond_to :html
 
@@ -13,7 +15,7 @@ class ProfilesController < ApplicationController
   end
 
   def new
-    @profile = Profile.new
+    @profile = current_user.profiles.build
     respond_with(@profile)
   end
 
@@ -21,7 +23,7 @@ class ProfilesController < ApplicationController
   end
 
   def create
-    @profile = Profile.new(profile_params)
+    @profile = current_user.profiles.build(profile_params)
     @profile.save
     respond_with(@profile)
   end
@@ -39,6 +41,11 @@ class ProfilesController < ApplicationController
   private
     def set_profile
       @profile = Profile.find(params[:id])
+    end
+
+    def correct_user
+      @profile = current_user.profiles.find_by(id: params[:id])
+      redirect_to profiles_path, notice: "Not authorized to edit this pin" if @profile.nil?
     end
 
     def profile_params
