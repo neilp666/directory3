@@ -16,6 +16,7 @@ gem 'devise'
 gem 'rails_12factor', group: :production
 gem 'pg', group: :production
 gem 'paperclip', github: 'thoughtbot/paperclip'
+gem 'aws-sdk', '< 2.0'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
