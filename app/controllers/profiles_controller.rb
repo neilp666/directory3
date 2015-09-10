@@ -15,7 +15,7 @@ class ProfilesController < ApplicationController
   end
 
   def new
-    @profile = current_user.profile.build
+    @profile = current_user.profiles.build
     respond_with(@profile)
   end
 
