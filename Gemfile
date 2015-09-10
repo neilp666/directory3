@@ -15,6 +15,7 @@ gem 'bootstrap-sass', '~> 3.3.5'
 gem 'devise'
 gem 'rails_12factor', group: :production
 gem 'pg', group: :production
+gem 'paperclip', github: 'thoughtbot/paperclip'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
