@@ -7,13 +7,22 @@
         <%= image_tag @profile.image.url(:medium) %>
     <div class="panel-body">
         <p><%= @profile.description %></p>
+
+
         <% if @profile.user == current_user %>
-        <%= link_to 'Edit', edit_profile_path(@profile) %> |
-        <% end %>
+        
+        <%= link_to raw('<span class="glyphicon glyphicon-edit"></span>  Edit'), edit_profile_path(@profile) %> |
+
+         <%= link_to @profile, method: :delete, data: { confirm: 'Are you sure?'} do %>
+         <span class="glyphicon glyphicon-trash"></span> Delete
+         <% end %>
       </div>
+      <% end %>
   </div>
 </div>
 </div>
 </div>
+
+
 
 
