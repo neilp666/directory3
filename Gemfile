@@ -19,6 +19,8 @@ gem 'pg', group: :production
 gem 'paperclip', github: 'thoughtbot/paperclip'
 gem 'aws-sdk', '< 2.0'
 gem 'masonry-rails'
+gem 'will_paginate', '~> 3.0.6'
+gem 'will_paginate-bootstrap'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
