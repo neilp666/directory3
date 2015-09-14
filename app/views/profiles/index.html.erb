@@ -1,34 +1,20 @@
-<h1>Listing profiles</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Image</th>
-      <th>Description</th>
-      <th>User id</th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div id="pins" class="transitions-enabled">
     <% @profiles.each do |profile| %>
-      <tr>
-        <td><%= image_tag profile.image.url(:medium) %></td>
-        <td><%= profile.description %></td>
-        <td><%= profile.user.email %></td>
-
-        <td><%= link_to 'Show', profile %></td>
-
-        <% if profile.user = current_user %>
-        <td><%= link_to 'Edit', edit_profile_path(profile) %></td>
-        <td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <div class="box panel panel-default">
+            <%= image_tag profile.image.url(:medium) %>
+              <div class="panel-body">
+                <%= profile.description %>
+                  <%= profile.user.email %>
+                  <%= link_to 'Show', profile %>
+                  <% if profile.user = current_user %>
+                     <%= link_to 'Edit', edit_profile_path(profile) %>
+                     <%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
+            </div>
+          </div>
         <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+</div>
 
-<br>
 
-<% if user_signed_in? %>
-  <%= link_to 'New Profile', new_profile_path %>
-<% end %>
+
+
